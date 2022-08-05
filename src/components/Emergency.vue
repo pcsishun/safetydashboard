@@ -1,6 +1,10 @@
 <template>
  
- 
+    <div class="close-emergency-counting" v-if="showEmergency === 'close-set-emergency-container'" @click="haddleClosingEmergency('comon')">
+        <div class="set-emergency-counting-text">
+                <h4><i class='fas fa-exclamation-triangle' style='font-size:15px'></i> {{$store.state.emergencyList.length}}</h4>
+        </div>
+    </div>
 
     <div :class="showEmergency" >
 
@@ -12,15 +16,12 @@
                 </div>
             </div>
             <div class="emergency-content" v-if="showEmergency === 'set-emergency-container'">
-                
-                
                 <div class="counting-emergency">
-                    <h3>จำนวนการแจ้งเตือน {{emergencyList.length}}</h3>
+                    <h3>จำนวนการแจ้งเตือน {{$store.state.emergencyList.length}}</h3>
                 </div>
                 <!-- use v-for here -->
-                <div class="emergency-list" v-for="(data, index) in emergencyList" :key="index">
-                    <div class="emergency-text">
-
+                <div class="emergency-list" v-for="(data, index) in $store.state.emergencyList" :key="index">
+                    <div class="emergency-text" @click="$store.commit('haddleSelectEmergency',data)">
                         <div class="content-text-container">
                             <div class="content-text">
                                 {{data.text}}
@@ -37,88 +38,22 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
             </div>
         </div>
-
     </div>
 </template>
 
 <script>
+// $store.state.emergencyList
 export default {
     data(){
         return{
             showEmergency: "set-emergency-container",
-            emergencyList: [
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                },
-                {
-                    text:"กดปุ่มขอความช่วยเหลือ (Anywhere)",
-                    user: "Earth(test)",
-                    matLine: "Telehealth Development",
-                    timing: "9 ชม."
-                }
-            ]
         }
     },
     methods:{
         haddleClosingEmergency(e){
-            console.log(e)
+            // console.log(e)
             if(e !== 'main-container'){
                 if(this.showEmergency === "set-emergency-container"){
                     this.showEmergency = "close-set-emergency-container"
@@ -129,7 +64,8 @@ export default {
                 this.showEmergency = "set-emergency-container"
             }
             
-        }
+        },
+        
     },
     mounted(){
 
@@ -139,8 +75,28 @@ export default {
 
 <style scoped>
 /* if hide emergency this css will work */
+.close-emergency-counting{
  
+    position: fixed;
+    text-align: center;
+    z-index: 999;
+    right: 0;
+    width: 80px;
+    height: 40px;
+    margin-top: 10px;
+    margin-right: 50px;
+    border-radius: 30px;
+    -webkit-animation: close-alert-emergency 1s infinite;  /* Safari 4+ */
+    -moz-animation: close-alert-emergency 1s infinite;  /* Fx 5+ */
+    -o-animation: close-alert-emergency 1s infinite;  /* Opera 12+ */
+    animation: close-alert-emergency 1s infinite; 
+}
 
+.set-emergency-counting-text{
+    transform: translateY(-50%);
+}
+
+ 
 /* emergency content */
 .set-emergency-container{
     position: absolute;
