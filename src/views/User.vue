@@ -6,27 +6,35 @@
         <el-col :span="24">
           <el-card shadow="never" class="mb-4">
             <el-row :gutter="12">
-              <el-col :span="8">
+              <el-col :span="6">
                 <div class="user-status-card text-center">
-                  <span class="px-2">อุปกรณ์</span>
+                  <span class="px-2">ผู้ใช้งาน</span>
                   <span class="text-xl px-2">33</span>
-                  <span class="px-2">ชิ้น</span>
+                  <span class="px-2">คน</span>
                 </div>
               </el-col>
-              <el-col :span="8">
+              <el-col :span="6">
                 <div class="user-status-card text-center">
                   <span class="user-status-dot-online px-2"></span>
                   <span class="px-2">ออนไลน์</span>
                   <span class="text-xl px-2">33</span>
-                  <span class="px-2">ชิ้น</span>
+                  <span class="px-2">คน</span>
                 </div>
               </el-col>
-              <el-col :span="8">
+              <el-col :span="6">
+                <div class="user-status-card text-center">
+                  <span class="user-status-dot-often-online px-2"></span>
+                  <span class="px-2">ออนไลน์บางส่วน</span>
+                  <span class="text-xl px-2">33</span>
+                  <span class="px-2">คน</span>
+                </div>
+              </el-col>
+              <el-col :span="6">
                 <div class="user-status-card text-center">
                   <span class="user-status-dot-offline px-2"></span>
                   <span class="px-2">ออฟไลน์</span>
                   <span class="text-xl px-2">33</span>
-                  <span class="px-2">ชิ้น</span>
+                  <span class="px-2">คน</span>
                 </div>
               </el-col>
             </el-row>
@@ -36,25 +44,9 @@
 
       <el-form label-position="top" label-width="100px">
         <el-row :gutter="12">
-          <el-col :span="6">
+          <el-col :span="8">
             <el-form-item label="ค้นหา">
               <el-input v-model="input1" class="w-50" placeholder="ค้นหา" />
-            </el-form-item>
-          </el-col>
-          <el-col :span="4">
-            <el-form-item label="ประเภทอุปกรณ์">
-              <el-select
-                v-model="accessoryTypeFilter"
-                placeholder="ประเภทอุปกรณ์"
-              >
-                <el-option label="ทุกประเภท" :value="null" />
-                <el-option
-                  v-for="item in accessoryTypes"
-                  :key="item.value"
-                  :label="item.label"
-                  :value="item.value"
-                />
-              </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="4">
@@ -309,6 +301,14 @@ export default {
   height: 18px;
   width: 18px;
   background-color: #0ed50f;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.user-status-dot-often-online {
+  height: 18px;
+  width: 18px;
+  background-color: #f6b900;
   border-radius: 50%;
   display: inline-block;
   vertical-align: middle;
