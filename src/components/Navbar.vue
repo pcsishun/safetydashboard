@@ -37,22 +37,23 @@ export default {
             <div class="line3"></div>
           </div>
         </div>
-        <h2>Telehealth Development</h2>
+        <div class="title-watching">Telehealth Development</div>
       </div>
       <div class="user-config">
-        <div>
+ 
           <h4>
             test@test.com &nbsp; &nbsp;<i
               class="fas fa-id-badge"
               style="font-size: 24px"
             ></i>
           </h4>
-        </div>
+    
       </div>
     </div>
 
     <div :class="$store.state.setsidemenu">
       <ul v-if="$store.state.isMenuOpen === true">
+      <div class="set-nav-menu">
         <div class="menu-content-conatiner" @click="haddleRouter('watching')">
           <div class="set-icon">
             <i class="fas fa-desktop" style="font-size: 24px"></i>
@@ -80,6 +81,8 @@ export default {
           </div>
           <div class="set-menu-content">ผู้ใช้</div>
         </div>
+      </div>
+        
       </ul>
     </div>
   </div>
@@ -104,8 +107,20 @@ export default {
 .user-config {
   color: white;
   margin-right: 50px;
+  margin-top: 20px;
+  font-weight: bold;
 }
 
+.set-nav-menu{
+  margin-left: 40px;
+}
+.title-watching{
+  margin-top:20px;
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 20px;
+
+}
 .menu-sidebar {
   height: 100vh;
   background: #ffffff;
@@ -182,10 +197,10 @@ export default {
 }
 
 .menu-content-conatiner:hover {
-  color: rgb(158, 158, 158);
+  color: rgb(255, 255, 255);
   border-bottom: 3px solid rgb(158, 158, 158);
   width: 80%;
-  transition: 0.5s;
+  transition: 0.3s;
 }
 
 .menu-content-conatiner:active {

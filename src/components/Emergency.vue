@@ -2,7 +2,10 @@
  
     <div class="close-emergency-counting" v-if="showEmergency === 'close-set-emergency-container'" @click="haddleClosingEmergency('comon')">
         <div class="set-emergency-counting-text">
-                <h4><i class='fas fa-exclamation-triangle' style='font-size:15px'></i> {{$store.state.emergencyList.length}}</h4>
+                <h4>
+                    <i class='fas fa-exclamation-triangle' style='font-size:23px'></i> 
+                    {{$store.state.emergencyList.length}}
+                </h4>
         </div>
     </div>
 
@@ -76,13 +79,12 @@ export default {
 <style scoped>
 /* if hide emergency this css will work */
 .close-emergency-counting{
- 
-    position: fixed;
+    position: absolute;
     text-align: center;
     z-index: 999;
     right: 0;
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 55px;
     margin-top: 10px;
     margin-right: 50px;
     border-radius: 30px;
@@ -93,10 +95,11 @@ export default {
 }
 
 .set-emergency-counting-text{
-    transform: translateY(-50%);
+    margin-top: 10%;
+    font-weight: bold;
+    font-size: 25px;
 }
 
- 
 /* emergency content */
 .set-emergency-container{
     position: absolute;
