@@ -110,7 +110,7 @@ export default {
   },
   data() {
     return {
-      selectedDivice: null,
+      selectedDevice: null,
       selectedPeriod: null,
       selectedDataA: null,
       selectedDataB: null,

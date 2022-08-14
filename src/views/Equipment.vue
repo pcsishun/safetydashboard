@@ -125,15 +125,15 @@
                     </el-col>
                     <el-col :span="10">
                       <span>ชื่อ : {{ props.row.owner }}</span>
-                      <div class="owner-info">
+                      <span class="owner-info">
                         <el-icon
                           @click="dialogOwnerInfoVisible = true"
-                          size="14px"
+                          size="18px"
                           class="ml-4"
                         >
                           <InfoFilled />
                         </el-icon>
-                      </div>
+                      </span>
                     </el-col>
                     <el-col :span="12">
                       <div class="mb-2 flex justify-between">
@@ -207,15 +207,97 @@
       </el-row>
     </section>
   </div>
-  <el-dialog v-model="dialogOwnerInfoVisible" title="Tips" width="30%">
-    <span>This is a message</span>
-    <template #footer>
-      <span class="dialog-footer">
-        <el-button @click="dialogOwnerInfoVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogOwnerInfoVisible = false"
-          >Confirm</el-button
-        >
-      </span>
+  <el-dialog
+    v-model="dialogOwnerInfoVisible"
+    title="Tips"
+    width="50%"
+    minWidth="640px"
+  >
+    <template #header="{}">
+      <div class="my-header">
+        <h4>User Information</h4>
+      </div>
+    </template>
+    <template #default>
+      <el-row :gutter="18">
+        <el-col :xs="24" :sm="13" :md="13" :lg="13" :xl="13">
+          <el-card shadow="never" class="mb-4">
+            <div class="mb-4" align="center">
+              <el-avatar
+                style="width: 120px; height: 120px"
+                src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
+                fit="cover"
+              />
+            </div>
+            <div>Jom (SCG)</div>
+            <div class="mb-4">
+              ตำบลบางซื่อ อำเภอบางซื่อ จังหวัดกรุงเทพมหานคร 10800
+            </div>
+            <div>
+              <span>
+                <el-icon size="16px" class="mr-2">
+                  <PhoneFilled />
+                </el-icon>
+              </span>
+              <span>0993952949</span>
+            </div>
+            <div>
+              <span>
+                <el-icon size="16px" class="mr-2">
+                  <Iphone />
+                </el-icon>
+              </span>
+              <span>0657197917</span>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :xs="24" :sm="11" :md="11" :lg="11" :xl="11">
+          <el-card shadow="never" class="mb-4">
+            <div
+              style="color: darkgrey; font-size: 12px"
+              class="mb-2"
+              align="right"
+            >
+              Telehealth Development
+            </div>
+            <div>
+              <span class="device-sub-list">วัน/เดือน/ปี เกิด : </span
+              ><span>02/02/1978</span>
+            </div>
+            <div>
+              <span class="device-sub-list">อายุ : </span><span>44 ปี</span>
+            </div>
+            <div>
+              <span class="device-sub-list">เพศ : </span><span>ชาย</span>
+            </div>
+            <div>
+              <span class="device-sub-list">สถานะ : </span><span>โสด</span>
+            </div>
+            <div>
+              <span class="device-sub-list">หมู่โลหิต : </span
+              ><span>ไม่ทราบ</span>
+            </div>
+            <div>
+              <span class="device-sub-list">น้ำหนัก : </span
+              ><span>ไม่ระบุ</span>
+            </div>
+            <div>
+              <span class="device-sub-list">ส่วนสูง : </span
+              ><span>ไม่ระบุ</span>
+            </div>
+          </el-card>
+          <el-card shadow="never" class="mb-4">
+            <div class="mb-1">
+              <span class="device-sub-list">อาการแพ้ : </span>
+              <el-tag type="default" class="mx-1" effect="dark"> ไม่มี </el-tag>
+            </div>
+            <div>
+              <span class="device-sub-list">โรคประจำตัว : </span>
+              <el-tag type="default" class="mx-1" effect="dark"> ไม่มี </el-tag>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
     </template>
   </el-dialog>
 </template>
@@ -340,5 +422,9 @@ export default {
 
 .owner-info {
   cursor: pointer;
+}
+
+.device-sub-list {
+  color: darkgray;
 }
 </style>

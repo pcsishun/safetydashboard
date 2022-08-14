@@ -42,7 +42,7 @@
         <el-row :gutter="12">
           <el-col :xs="24" :sm="12" :md="4" :lg="4" :xl="4">
             <el-form-item label="Select Device">
-              <el-select v-model="selectedDivice" placeholder="Select Device">
+              <el-select v-model="selectedDevice" placeholder="Select Device">
                 <el-option
                   v-for="item in mockData"
                   :key="item.value"
@@ -167,7 +167,7 @@ export default {
   },
   data() {
     return {
-      selectedDivice: null,
+      selectedDevice: null,
       selectedPeriod: null,
       selectedDataA: null,
       selectedDataB: null,
