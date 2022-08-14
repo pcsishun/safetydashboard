@@ -100,24 +100,27 @@ export default defineComponent({
 </template>
 
 <style scoped>
+ 
 .bind-set-googlemap-container{
     opacity: 0.5;
 }
 
 
-
 .info-title{
+    color: black;
     font-weight: bold;
     font-size: 15px;
 }
 
 .info-username{
+    color: black;
     margin-top: 10px;
     font-weight: bold;
     font-size: 13px;
 }
 
 .info-detail{
+    color: black;
     margin-top: 10px;
 }
 
