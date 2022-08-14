@@ -6,14 +6,14 @@
         <el-col :span="24">
           <el-card shadow="never" class="mb-4">
             <el-row :gutter="12">
-              <el-col :span="6">
+              <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
                 <div class="user-status-card text-center">
                   <span class="px-2">ผู้ใช้งาน</span>
                   <span class="text-xl px-2">33</span>
                   <span class="px-2">คน</span>
                 </div>
               </el-col>
-              <el-col :span="6">
+              <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
                 <div class="user-status-card text-center">
                   <span class="user-status-dot-online px-2"></span>
                   <span class="px-2">ออนไลน์</span>
@@ -21,7 +21,7 @@
                   <span class="px-2">คน</span>
                 </div>
               </el-col>
-              <el-col :span="6">
+              <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
                 <div class="user-status-card text-center">
                   <span class="user-status-dot-often-online px-2"></span>
                   <span class="px-2">ออนไลน์บางส่วน</span>
@@ -29,7 +29,7 @@
                   <span class="px-2">คน</span>
                 </div>
               </el-col>
-              <el-col :span="6">
+              <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
                 <div class="user-status-card text-center">
                   <span class="user-status-dot-offline px-2"></span>
                   <span class="px-2">ออฟไลน์</span>
@@ -44,12 +44,12 @@
 
       <el-form label-position="top" label-width="100px">
         <el-row :gutter="12">
-          <el-col :span="8">
+          <el-col :xs="24" :sm="12" :md="8" :lg="8" :xl="8">
             <el-form-item label="ค้นหา">
               <el-input v-model="input1" class="w-50" placeholder="ค้นหา" />
             </el-form-item>
           </el-col>
-          <el-col :span="4">
+          <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
             <el-form-item label="สถานะการใช้งาน">
               <el-select
                 v-model="activeStatusFilter"
@@ -65,7 +65,7 @@
               </el-select>
             </el-form-item>
           </el-col>
-          <el-col :span="4">
+          <el-col :xs="24" :sm="6" :md="6" :lg="6" :xl="6">
             <el-form-item label="สถานะ">
               <el-select v-model="onlineStatusFilter" placeholder="สถานะ">
                 <el-option label="ทั้งหมด" :value="null" />
@@ -108,14 +108,21 @@
                   </el-row>
                   <el-divider />
                   <el-row :gutter="12">
-                    <el-col :span="2" class="text-center">
+                    <el-col
+                      :xs="4"
+                      :sm="4"
+                      :md="2"
+                      :lg="2"
+                      :xl="2"
+                      class="text-center"
+                    >
                       <el-image
                         style="width: 60px; height: 60px"
                         src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg"
                         fit="cover"
                       />
                     </el-col>
-                    <el-col :span="10">
+                    <el-col :xs="20" :sm="20" :md="10" :lg="10" :xl="10">
                       <span>ชื่อ : {{ props.row.owner }}</span>
                       <div class="owner-info">
                         <el-icon
@@ -127,7 +134,7 @@
                         </el-icon>
                       </div>
                     </el-col>
-                    <el-col :span="12">
+                    <el-col :xs="24" :sm="24" :md="12" :lg="12" :xl="12">
                       <div class="mb-2 flex justify-between">
                         <span>อุปกรณ์ที่เกี่ยวข้อง</span>
                         <span>Telehealth Development</span>
@@ -153,10 +160,24 @@
             </el-table-column>
             <el-table-column label="รหัส" prop="code" />
             <el-table-column label="ชื่อ" prop="name" />
-            <el-table-column label="ประเภท" prop="accessoryType" />
-            <el-table-column label="เจ้าของ" prop="owner" />
+            <el-table-column label="เบอร์โทรศัพท์ (บุคคล)" prop="phoneNumber" />
+            <el-table-column label="อุปกรณ์" prop="devices" align="center" />
             <el-table-column
-              label="เปิดใช้งาน"
+              label="สถานะ"
+              prop="onlineStatus"
+              width="90px"
+              align="center"
+            >
+              <template #default="scope">
+                <div
+                  v-if="scope.row.onlineStatus"
+                  class="user-status-dot-online-sm"
+                ></div>
+                <div v-else class="user-status-dot-offline-sm"></div>
+              </template>
+            </el-table-column>
+            <el-table-column
+              label="สถานะการใช้งาน"
               prop="activeStatus"
               width="90px"
               align="center"
@@ -174,18 +195,20 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column
-              label="ออนไลน์"
-              prop="onlineStatus"
-              width="90px"
-              align="center"
-            >
+            <el-table-column label="" width="120px" align="center">
               <template #default="scope">
-                <div
-                  v-if="scope.row.onlineStatus"
-                  class="user-status-dot-online-sm"
-                ></div>
-                <div v-else class="user-status-dot-offline-sm"></div>
+                <el-icon
+                  @click="openUserInformationPage(scope.row.userId)"
+                  class="icon-button mx-1"
+                >
+                  <InfoFilled />
+                </el-icon>
+                <el-icon
+                  @click="openUserChartPage(scope.row.userId)"
+                  class="icon-button mx-1"
+                >
+                  <TrendCharts />
+                </el-icon>
               </template>
             </el-table-column>
           </el-table>
@@ -271,24 +294,38 @@ export default {
       mockData: {
         accessories: [
           {
+            userId: 1,
             code: "SCV861629051043093",
             name: "AST-BPK-001",
             accessoryType: "Go_Live_Clip",
             owner: "Jom (SCG)",
+            phoneNumber: "0636455629",
+            devices: "0/2",
             activeStatus: true,
             onlineStatus: true,
           },
           {
+            userId: 2,
             code: "SCV861629051043770",
             name: "QRT-AW01-003 (W)",
             accessoryType: "Livon_Telecare",
             owner: "นายทดสอบ ระบบSSS (SCG)",
+            phoneNumber: "0896451882",
+            devices: "0/1",
             activeStatus: false,
             onlineStatus: false,
           },
         ],
       },
     };
+  },
+  methods: {
+    openUserInformationPage(userId) {
+      this.$router.push({ path: "userInfo", query: { userId: userId } });
+    },
+    openUserChartPage(userId) {
+      this.$router.push({ path: "userChart", query: { userId: userId } });
+    },
   },
 };
 </script>
@@ -339,6 +376,10 @@ export default {
 }
 
 .owner-info {
+  cursor: pointer;
+}
+.icon-button {
+  font-size: 24px;
   cursor: pointer;
 }
 </style>
