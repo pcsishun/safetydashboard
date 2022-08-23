@@ -37,7 +37,7 @@ export default {
             <div class="line3"></div>
           </div>
         </div>
-        <div class="title-watching">Telehealth Development</div>
+        <div class="title-watching">ระบบดูแลสุขภาพ</div>
       </div>
       <div class="user-config">
  
